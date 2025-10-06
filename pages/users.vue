@@ -11,8 +11,10 @@
     
   </div>
 
-  <usersList/>
+ <div class="text-center">
+ <NuxtLink to="/usersList" class="bg-blue-600 text-2xl text-white">Views Users</NuxtLink>
   
+ </div>
 </template>
 
 <script setup lang="ts">

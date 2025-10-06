@@ -1,6 +1,7 @@
 <template>
   <div class="mt-8">
     <div class="flex items-center justify-between mb-3">
+   <NuxtLink to="/users" class="bg-blue-600 text-2xl text-white"> Add User</NuxtLink>
       <h2 class="text-xl font-semibold text-gray-800">User List</h2>
       <button @click="load" class="bg-blue-600 text-white px-4 py-2 rounded">
         Refresh
