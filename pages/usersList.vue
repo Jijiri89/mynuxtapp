@@ -41,7 +41,7 @@
               <span v-else>{{ u.email }}</span>
             </td>
 
-            <td class="px-4 py-2">
+            <td class="px-4 py-2 space-x-3">
               <button
                 v-if="editingId !== u.id"
                 @click="startEdit(u)"
@@ -52,7 +52,7 @@
               <button
                 v-else
                 @click="save(u.id)"
-                class="text-green-600 underline mr-2"
+                class="text-green-600 underline"
               >
                 Save
               </button>
@@ -62,6 +62,14 @@
                 class="text-red-500 underline"
               >
                 Cancel
+              </button>
+
+              <!-- Delete always visible -->
+              <button
+                @click="del(u.id)"
+                class="text-red-600 underline"
+              >
+                Delete
               </button>
             </td>
           </tr>
@@ -110,8 +118,14 @@ async function save(id) {
     method: "PUT",
     body: { name: editName.value, email: editEmail.value },
   });
-
-  await load(); // refresh list
+  await load();
   cancelEdit();
+}
+
+// Delete user (super simple)
+async function del(id) {
+  if (!confirm("Delete this user?")) return;
+  await $fetch(`/api/users/${id}`, { method: "DELETE" });
+  await load();
 }
 </script>
