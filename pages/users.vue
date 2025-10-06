@@ -43,9 +43,12 @@ async function createUser() {
     name.value = "";
     email.value = "";
     alert("User created successfully ✅");
+    // go to /usersList
+    await navigateTo("/usersList");
   } catch (e: any) {
     // show whatever the server said (your route returns 400/409 messages)
     alert(e?.statusMessage || "Failed to create user");
   }
+
 }
 </script>
